@@ -33,6 +33,7 @@
 
         <link rel="stylesheet" href="Index.css" />
         <title>Title</title>
+        
     </head>
     
     
@@ -40,7 +41,7 @@
         <div class="Item-bar">
             <div class="slidecontainer">
                 <label>Array size:</label>
-                <input type="range" min="10" max="500"  value="500" class="slider" id="arraySize">
+                <input type="range" min="10" max="500"  value="10" class="slider" id="arraySize">
             </div>
             <button style="margin:auto;" onclick="sort()">
                 Sort!!!
@@ -60,98 +61,4 @@
         
 
     </body>
-<script>
-    clicked=false; 
-    var arraySize=document.getElementById("arraySize").value;
-    var arraysize_change
-    canvas=document.getElementById("myCanvas");
-    var ctx = canvas.getContext("2d");
-    var width=canvas.clientWidth;
-    var height=canvas.clientHeight;
-    canvas.height=height;
-    canvas.width=width;
-    var left_border=(width/20);
-    var right_border=width-(width/20);
-    
-    var radomized_array=[];
-            for(let i=0; i<arraySize;i++){
-                
-                radomized_array.push(Math.random());
-
-            }
-                
-    setInterval(function(){ 
-            if(clicked==false){ 
-                arraysize_change=document.getElementById("arraySize").value;
-                if(arraySize!=arraysize_change){
-                    arraySize=arraysize_change;
-                    radomized_array.length=0;
-                for(let i=0; i<arraySize;i++){
-                
-                    radomized_array.push(Math.random());
-
-                }
-                thickness=(width*.80)/arraySize;
-                spacing =(width*.10)/arraySize;
-                }
-                drawArray('limegreen',-1);
-
-            }
-        }, 50);
-    
-    function randomize(){
-                
-                
-    }
-    
-    function drawArray(color,index){
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
-        position=left_border
-        for(var i=0;i<arraySize;i++){  
-            
-            if(index!=-1 && i==index){
-                drawrect(position,radomized_array[i]*height,"red");
-                position=position+thickness+spacing;
-            }
-            else{
-            drawrect(position,radomized_array[i]*height,color);
-            position=position+thickness+spacing;
-            }
-            
-        }
-
-    }
-    function drawrect(start,height,color) {
-        ctx.beginPath();
-        ctx.fillStyle = color;
-        ctx.fillRect(start,0,thickness,height)
-        ctx.stroke();
-    }          
-    
-    function sort(){ // needs to have cases based on with sorting methods to use
-        clicked=true;
-        bubblesort();
-    }
-
-    function bubblesort(){
-        var comparisons=0
-        for(var i=radomized_array.length;i>=0;i--){
-
-        for(var j=0;j<i;j++){
-            console.log(radomized_array[j],radomized_array[j+1]);
-            if(radomized_array[j]>radomized_array[j+1]){
-                var temp=radomized_array[j+1]
-                radomized_array[j+1]=radomized_array[j]
-                radomized_array[j]=temp
-                drawArray('limegreen',j);
-                comparisons++;
-                
-                
-                
-            }
-        }
-     }
-     clicked=false;
-     document.getElementById("comparisons").innerHTML=comparisons;
-    }
-</script>
+    <script src="Sorting.js"></script>
