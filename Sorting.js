@@ -18,7 +18,7 @@ var sorted=false
 var clicked=false;
 var i  
 var j
-var frameRate=1
+const FRAMERATE=.005
 start();
 
 function sort(){ // needs to have cases based on with sorting methods to use
@@ -49,7 +49,8 @@ function setParameters(){
 }
 function update(){
     setInterval(function(){ 
-        drawArray('limegreen');
+      document.getElementById("arrayLabel").innerHTML=arraySize;  
+      drawArray('limegreen');
         if(clicked==false){
             arraysize_change=document.getElementById("arraySize").value;
             if(arraySize!=arraysize_change){
@@ -67,13 +68,13 @@ function update(){
 
         }
         document.getElementById("comparisons").innerHTML=comparisons;
-    }, frameRate);
+    }, FRAMERATE);
 }
 
-function drawrect(start,height,color) {
+function drawrect(start,recHeight,color) {
     ctx.beginPath();
     ctx.fillStyle = color;
-    ctx.fillRect(start,0,thickness,height)
+    ctx.fillRect(start,height-recHeight,thickness,height)
     ctx.stroke();
 }
 

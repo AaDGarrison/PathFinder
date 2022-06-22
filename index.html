@@ -7,6 +7,7 @@
     }
     .slider{
         display: inline-block; 
+        vertical-align: text-bottom;
     }
     body{
         text-align: center;
@@ -43,6 +44,7 @@
                 <label>Array size:</label>
                 <input type="range" min="10" max="500"  value="10" class="slider" id="arraySize">
             </div>
+            <label id="arrayLabel"></label>
             <button style="margin:auto;" onclick="sort()">
                 Sort!!!
             </button>
